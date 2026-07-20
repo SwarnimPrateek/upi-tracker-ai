@@ -12,6 +12,7 @@ const getGeminiClient = () => {
   return new GoogleGenAI({ apiKey });
 };
 
+
 export interface ExtractedTransaction {
   merchant: string | null;
   amount: number | null;
@@ -70,9 +71,9 @@ export async function extractTransactionFromImage(base64Image: string): Promise<
               amount: { type: 'number', nullable: true },
               date: { type: 'string', nullable: true, description: 'Transaction date in YYYY-MM-DD format' },
               reference_number: { type: 'string', nullable: true, description: 'UPI reference number or unique transaction ID' },
-              category: { 
-                type: 'string', 
-                enum: ['Food', 'Shopping', 'Bills', 'Travel', 'Others'] 
+              category: {
+                type: 'string',
+                enum: ['Food', 'Shopping', 'Bills', 'Travel', 'Others']
               }
             },
             required: ['merchant', 'amount', 'date', 'reference_number', 'category']
